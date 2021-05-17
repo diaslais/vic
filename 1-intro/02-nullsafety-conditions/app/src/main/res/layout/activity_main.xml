@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Qual seu nome?"/>
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="text"/>
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="Qual sua data de nascimento?"/>
+
+        <EditText
+            android:id="@+id/edtDate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="date"/>
+
+        <TextView
+            android:id="@+id/txtGift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="O que quer ganhar de presente?"/>
+
+        <EditText
+            android:id="@+id/edtGift"
+            android:layout_gravity="center"
+            android:inputType="text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:text="Enviar"/>
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
