@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,20 +26,47 @@ class MainActivity : AppCompatActivity() {
         gift = findViewById(R.id.edtGift)
         button = findViewById(R.id.btnSend)
 
-        val numberOfDays = countDays()
-
         button.setOnClickListener {
+            val numberOfDays = countDays()
             makeToast(numberOfDays)
         }
     }
 
+
     fun countDays(): Int {
-        val days = 0
-        //calcular
+        //calendar.time = data atual
+        var calendar = Calendar.getInstance()
+        val currentDate = calendar.time
+        val currentYear = calendar.get(Calendar.YEAR)
+
+        //pega a data de nascimento em string e formata em Date
+        val format = SimpleDateFormat("dd/MM/yyyy")
+        val birthDate: Date = format.parse(date.text.toString())
+
+        calendar.time = birthDate
+        val birthYear = calendar.get(Calendar.YEAR)
+
+        val yearDiff = currentYear - birthYear
+        calendar.add(Calendar.YEAR, yearDiff) //coloca em calendar a data de aniversário do ano atual
+
+        val birthdayCurrentYear = calendar.time
+        var nextBirthday: Date
+
+        if (birthdayCurrentYear.before(currentDate)){ //se aniversário desse ano já foi
+            calendar.add(Calendar.YEAR, 1)
+            nextBirthday = calendar.time
+        } else {
+            nextBirthday = birthdayCurrentYear
+        }
+
+        //o ".time" do Calendar retorna um Date
+        //o ".time" do Date retorna um Long (periodo em milisegundos)
+        val days = TimeUnit.DAYS.convert(nextBirthday.time - currentDate.time, TimeUnit.MILLISECONDS).toInt()
+
         return days
     }
 
-    fun makeToast(numberOfDays: Int){
+    fun makeToast(numberOfDays: Int) {
         val text = "Olá ${name.text}, faltam $numberOfDays dias para o seu aniversário! Espero que você ganhe um(a) ${gift.text}."
         val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_LONG)
         toast.show()

@@ -25,6 +25,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:inputType="text"/>
 
         <TextView
@@ -41,6 +42,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:inputType="date"/>
 
         <TextView
@@ -55,6 +57,7 @@
         <EditText
             android:id="@+id/edtGift"
             android:layout_gravity="center"
+            android:gravity="center"
             android:inputType="text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"/>
