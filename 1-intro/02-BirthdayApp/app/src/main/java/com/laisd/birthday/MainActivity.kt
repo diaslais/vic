@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var date: EditText
     lateinit var gift: EditText
     lateinit var button: Button
+    val list = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             makeToast(numberOfDays)
         }
     }
-
 
     fun countDays(): Int {
         //calendar.time = data atual
@@ -68,7 +68,12 @@ class MainActivity : AppCompatActivity() {
 
     fun makeToast(numberOfDays: Int) {
         val text = "Olá ${name.text}, faltam $numberOfDays dias para o seu aniversário! Espero que você ganhe um(a) ${gift.text}."
-        val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_LONG)
+        addToList(text)
+        val toast = Toast.makeText(applicationContext, list[0], Toast.LENGTH_LONG)
         toast.show()
+    }
+
+    fun addToList(text: String){
+        list.add(text)
     }
 }
