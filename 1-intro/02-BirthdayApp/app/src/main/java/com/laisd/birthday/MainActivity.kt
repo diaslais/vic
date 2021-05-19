@@ -1,12 +1,11 @@
 package com.laisd.birthday
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -15,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var name: EditText
     lateinit var date: EditText
     lateinit var gift: EditText
+    lateinit var answer: TextView
     lateinit var button: Button
     val list = mutableListOf<String>()
 
@@ -25,15 +25,19 @@ class MainActivity : AppCompatActivity() {
         name = findViewById(R.id.edtName)
         date = findViewById(R.id.edtDate)
         gift = findViewById(R.id.edtGift)
+        answer = findViewById(R.id.txtAnswer)
         button = findViewById(R.id.btnSend)
 
         button.setOnClickListener {
-            val numberOfDays = countDays()
-            makeToast(numberOfDays)
+            if (validateField(name) && validateField(date) && validateField(gift)) {
+                val numberOfDays = countDays()
+                addToList(numberOfDays)
+                showAnswer()
+            }
         }
     }
 
-    fun countDays(): Int {
+    fun countDays(): Long {
         //calendar.time = data atual
         var calendar = Calendar.getInstance()
         val currentDate = calendar.time
@@ -58,22 +62,32 @@ class MainActivity : AppCompatActivity() {
         } else {
             nextBirthday = birthdayCurrentYear
         }
-
         //o ".time" do Calendar retorna um Date
         //o ".time" do Date retorna um Long (periodo em milisegundos)
-        val days = TimeUnit.DAYS.convert(nextBirthday.time - currentDate.time, TimeUnit.MILLISECONDS).toInt()
+        val days = TimeUnit.DAYS.convert(nextBirthday.time - currentDate.time, TimeUnit.MILLISECONDS) + 1
 
         return days
     }
 
-    fun makeToast(numberOfDays: Int) {
-        val text = "Olá ${name.text}, faltam $numberOfDays dias para o seu aniversário! Espero que você ganhe um(a) ${gift.text}."
-        addToList(text)
-        val toast = Toast.makeText(applicationContext, list[0], Toast.LENGTH_LONG)
-        toast.show()
+    fun showAnswer() {
+        var textAnswer = ""
+        for (text in list) {
+            textAnswer += text
+        }
+        answer.text = textAnswer
     }
 
-    fun addToList(text: String){
+    fun addToList(numberOfDays: Long) {
+        val text = "Faltam $numberOfDays dias para o aniversário de ${name.text} e o presente será um(a) ${gift.text}.\n\n"
         list.add(text)
+    }
+
+    fun validateField(field: EditText): Boolean {
+        var notEmpty = true
+        if (field.text.toString().isEmpty()) {
+            field.error = "Preencha o campo"
+            notEmpty = false
+        }
+        return notEmpty
     }
 }
