@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
-    var sequence = mutableListOf<Int>()
+    var sequence = mutableListOf<Long>(1, 1)
     lateinit var userInputLayout: TextInputLayout
     lateinit var userInputEdt: TextInputEditText
     lateinit var btnSend: Button
@@ -31,22 +31,19 @@ class MainActivity : AppCompatActivity() {
         btnSend.setOnClickListener {
             if (validadeField()) {
                 val position = userInputEdt.text.toString().toInt() - 1
-                sequence = mutableListOf()
+                if (position == -1) sequence = mutableListOf()
+                else if (position == 0) sequence = mutableListOf(1)
+                else sequence = mutableListOf(1, 1)
                 getSequence(position)
                 showAnswer(position)
             }
         }
     }
 
-    fun getSequence(position: Int): Int {
+    fun getSequence(position: Int): Long {
         if (position < 0) return 0 // nao faz nada
-        if (position == 0) {
-            if (sequence.size <= 1) sequence.add(1)
+        if (position == 0 || position == 1) {
             return 1
-        }
-        if (position == 1) {
-            if (sequence.size <= 0) sequence.add(1)
-            return getSequence(position - 1)
         }
         val positionValue = getSequence(position - 1) + getSequence(position - 2)
         if (!sequence.contains(positionValue)) sequence.add(positionValue)
