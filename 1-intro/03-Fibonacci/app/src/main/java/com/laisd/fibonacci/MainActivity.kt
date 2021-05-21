@@ -11,11 +11,12 @@ import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
-    val sequence = mutableListOf(1, 1)
+    var sequence = mutableListOf<Int>()
     lateinit var userInputLayout: TextInputLayout
     lateinit var userInputEdt: TextInputEditText
     lateinit var btnSend: Button
     lateinit var answer: TextView
+    lateinit var answerTitle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,33 +26,44 @@ class MainActivity : AppCompatActivity() {
         userInputEdt = findViewById(R.id.edTxtPosition)
         btnSend = findViewById(R.id.btnSend)
         answer = findViewById(R.id.txtAnswer)
+        answerTitle = findViewById(R.id.txtAnswerTitle)
 
         btnSend.setOnClickListener {
             if (validadeField()) {
                 val position = userInputEdt.text.toString().toInt() - 1
+                sequence = mutableListOf()
                 getSequence(position)
-                showAnswer()
+                showAnswer(position)
             }
         }
     }
 
     fun getSequence(position: Int): Int {
-        if (position == 0 || position == 1) return 1
+        if (position < 0) return 0 // nao faz nada
+        if (position == 0) {
+            if (sequence.size <= 1) sequence.add(1)
+            return 1
+        }
+        if (position == 1) {
+            if (sequence.size <= 0) sequence.add(1)
+            return getSequence(position - 1)
+        }
         val positionValue = getSequence(position - 1) + getSequence(position - 2)
         if (!sequence.contains(positionValue)) sequence.add(positionValue)
         return positionValue
     }
 
-    fun showAnswer() {
+    fun showAnswer(userAnswer: Int) {
         var textAnswer = ""
-        for (number in sequence) textAnswer += number.toString()
+        for (number in sequence) textAnswer += "$number | "
         answer.text = textAnswer
+        answerTitle.text = getString(R.string.answer_title, userAnswer + 1)
     }
 
     fun validadeField(): Boolean {
         var notEmpty = true
         if (userInputEdt.text.toString().isEmpty()) {
-            userInputLayout.error = "Preencha o campo"
+            userInputLayout.error = getString(R.string.empty_field)
             notEmpty = false
         }
         userInputEdt.addTextChangedListener(object: TextWatcher {
