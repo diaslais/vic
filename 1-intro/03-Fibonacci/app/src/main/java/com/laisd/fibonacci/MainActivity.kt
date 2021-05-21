@@ -42,9 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getSequence(position: Int): Long {
         if (position < 0) return 0 // nao faz nada
-        if (position == 0 || position == 1) {
-            return 1
-        }
+        if (position == 0 || position == 1) return 1
         val positionValue = getSequence(position - 1) + getSequence(position - 2)
         if (!sequence.contains(positionValue)) sequence.add(positionValue)
         return positionValue
