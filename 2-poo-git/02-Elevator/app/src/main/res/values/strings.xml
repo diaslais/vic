@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Elevator</string>
+    <string name="number_people">%d/5</string>
+    <string name="current_floor">%dº \nandar</string>
+    <string name="ground_floor">térreo</string>
+    <string name="elevator_full">O elevador está lotado.</string>
+    <string name="elevator_empty">O elevador está vazio.</string>
+    <string name="insert_floor">Insira um andar.</string>
+    <string name="floor_negative">Só é possível ir até o Térreo.</string>
 </resources>

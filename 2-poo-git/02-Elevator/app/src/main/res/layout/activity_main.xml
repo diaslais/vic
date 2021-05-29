@@ -17,20 +17,12 @@
         android:id="@+id/txtFloor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5º"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="andar"
         />
 
     <TextView
         android:id="@+id/txtNumberOfPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2/5"
         />
 
     <TextView
@@ -46,7 +38,7 @@
         android:hint="Digite um andar">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTxtInpu"
+            android:id="@+id/edtTxtInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -77,14 +69,12 @@
             android:layout_height="wrap_content"
             android:text="Entrar"
             />
-
         <Button
             android:id="@+id/btnLeave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sair"
             />
-
     </LinearLayout>
 
 </LinearLayout>
