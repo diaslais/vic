@@ -95,11 +95,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (field.text.toString().isEmpty()) {
             notEmpty = false
             layout.error = getString(R.string.insert_floor)
-        } else {
-            if (field.text.toString().toInt() < 0) {
-                notEmpty = false
-                layout.error = getString(R.string.floor_negative)
-            }
+        } else if (field.text.toString().toInt() < 0) {
+            notEmpty = false
+            layout.error = getString(R.string.floor_negative)
+        } else if (field.text.toString().toInt() > 15){
+            notEmpty = false
+            layout.error = getString(R.string.floor_max)
         }
         field.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
