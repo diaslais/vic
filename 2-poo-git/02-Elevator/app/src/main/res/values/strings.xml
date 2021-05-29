@@ -2,9 +2,17 @@
     <string name="app_name">Elevator</string>
     <string name="number_people">%d/5</string>
     <string name="current_floor">%dº \nandar</string>
-    <string name="ground_floor">térreo</string>
+    <string name="ground_floor">Térreo</string>
     <string name="elevator_full">O elevador está lotado.</string>
     <string name="elevator_empty">O elevador está vazio.</string>
     <string name="insert_floor">Insira um andar.</string>
     <string name="floor_negative">Só é possível ir até o Térreo.</string>
+    <string name="voce_esta_no">Você está no</string>
+    <string name="pessoas_no_elevador">pessoas no \nelevador</string>
+    <string name="digite_um_andar">Digite um andar</string>
+    <string name="ir_para_o_andar_selecionado">Ir para o andar selecionado</string>
+    <string name="alguem_ira">Alguém irá...</string>
+    <string name="entrar">Entrar</string>
+    <string name="sair">Sair</string>
+    <string name="floor_max">Só existem 15 andares.</string>
 </resources>

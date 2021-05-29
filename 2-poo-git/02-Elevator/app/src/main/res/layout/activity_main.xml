@@ -1,41 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="30dp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Você está no"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/voce_esta_no"
         />
 
     <TextView
         android:id="@+id/txtFloor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         />
 
-    <TextView
-        android:id="@+id/txtNumberOfPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/circle"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pessoas no \nelevador"
-        />
+        <TextView
+            android:id="@+id/txtNumberOfPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="@string/pessoas_no_elevador"
+            />
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutTxtInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite um andar">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/digite_um_andar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtInput"
@@ -47,34 +73,52 @@
 
     <Button
         android:id="@+id/btnGoToFloor"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ir para o andar selecionado"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alguém irá..."
+        android:backgroundTint="@color/button_blue"
+        android:text="@string/ir_para_o_andar_selecionado"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/btnEnter"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Entrar"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="@string/alguem_ira"
+            android:layout_marginBottom="20dp"
             />
-        <Button
-            android:id="@+id/btnLeave"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sair"
-            />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entrar"
+                android:backgroundTint="@color/button_green"
+                android:layout_marginHorizontal="8dp"
+                />
+            <Button
+                android:id="@+id/btnLeave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/sair"
+                android:backgroundTint="@color/button_red"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
