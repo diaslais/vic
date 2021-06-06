@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Schedule</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="personal">Personal</string>
+    <string name="work">Work</string>
+    <string name="reference">Reference</string>
+    <string name="save">Save</string>
+</resources>
