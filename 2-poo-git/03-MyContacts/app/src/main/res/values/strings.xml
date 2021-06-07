@@ -5,7 +5,11 @@
     <string name="personal">Personal</string>
     <string name="work">Work</string>
     <string name="reference">Reference</string>
+    <string name="email">E-mail</string>
     <string name="save">Save</string>
     <string name="app_label">MyContacts</string>
     <string name="search_hint">Search contact</string>
+    <string name="empty_field">The field is empty</string>
+    <string name="already_exists">Contact already exists</string>
+    <string name="text">text</string>
 </resources>
