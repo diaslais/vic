@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="30dp"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/txtYouAre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:text="@string/voce_esta_no"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
     <TextView
@@ -22,16 +25,22 @@
         android:textSize="34sp"
         android:textStyle="bold"
         android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtYouAre"
         />
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/circle"
         android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/txtFloor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/txtNumberOfPeople"
@@ -59,9 +68,10 @@
         android:id="@+id/layoutTxtInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        android:hint="@string/digite_um_andar">
+        android:layout_marginTop="30dp"
+        android:hint="@string/digite_um_andar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtInput"
@@ -76,49 +86,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_blue"
+        android:layout_marginTop="10dp"
         android:text="@string/ir_para_o_andar_selecionado"
+        app:layout_constraintTop_toBottomOf="@id/layoutTxtInput"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/txtSomeone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="@string/alguem_ira"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+        <Button
+            android:id="@+id/btnEnter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="@string/alguem_ira"
-            android:layout_marginBottom="20dp"
+            android:text="@string/entrar"
+            android:backgroundTint="@color/button_green"
+            android:layout_marginHorizontal="8dp"
             />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnLeave"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnEnter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/entrar"
-                android:backgroundTint="@color/button_green"
-                android:layout_marginHorizontal="8dp"
-                />
-            <Button
-                android:id="@+id/btnLeave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:text="@string/sair"
-                android:backgroundTint="@color/button_red"
-                />
-        </LinearLayout>
-
+            android:layout_marginHorizontal="8dp"
+            android:text="@string/sair"
+            android:backgroundTint="@color/button_red"
+            />
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
