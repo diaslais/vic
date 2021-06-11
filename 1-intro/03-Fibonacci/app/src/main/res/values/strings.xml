@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Fibonacci</string>
     <string name="empty_field">Preencha o campo</string>
+    <string name="numbers">"%d | "</string>
     <string name="answer_title">Os %d primeiros números da sequência de Fibonacci são:</string>
 </resources>

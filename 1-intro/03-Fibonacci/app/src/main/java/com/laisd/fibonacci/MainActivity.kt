@@ -50,7 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     fun showAnswer(userAnswer: Int) {
         var textAnswer = ""
-        for (number in sequence) textAnswer += "$number | "
+        for (number in sequence) {
+            textAnswer += getString(R.string.numbers, number)
+        }
         answer.text = textAnswer
         answerTitle.text = getString(R.string.answer_title, userAnswer + 1)
     }
