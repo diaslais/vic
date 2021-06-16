@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-var myContacts: ContactsList = ContactsList()
-
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     lateinit var contactsListRecyclerview: RecyclerView
@@ -72,5 +70,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             doMySearch(query)
         }
         return true
+    }
+
+    companion object {
+        val myContacts: ContactsList = ContactsList()
     }
 }
