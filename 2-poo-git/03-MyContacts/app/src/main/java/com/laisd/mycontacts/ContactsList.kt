@@ -1,6 +1,6 @@
 package com.laisd.mycontacts
 
-class ContactsList(private val contacts: MutableList<Contact> = mutableListOf<Contact>(),
+class ContactsList(private val contacts: MutableList<Contact> = mutableListOf(),
                    private val emptyList: MutableList<Contact> = mutableListOf(
                        Contact(
                            "Empty list",

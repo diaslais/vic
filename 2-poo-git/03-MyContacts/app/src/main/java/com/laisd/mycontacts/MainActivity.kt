@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         makeRecyclerView(myContacts.getContacts())
 
-        searchView.isSubmitButtonEnabled = true
         searchView.setOnQueryTextListener(this)
 
         btnAddContact.setOnClickListener{
