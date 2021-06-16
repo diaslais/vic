@@ -17,6 +17,7 @@ class ContactsList(private val contacts: MutableList<Contact> = mutableListOf<Co
         if (contacts.isEmpty()) {
             return emptyList
         } else {
+            contacts.sortBy { it.name }
             return contacts
         }
     }
