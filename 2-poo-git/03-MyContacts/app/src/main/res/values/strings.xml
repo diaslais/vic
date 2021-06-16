@@ -12,4 +12,6 @@
     <string name="empty_field">The field is empty</string>
     <string name="already_exists">Contact already exists</string>
     <string name="text">text</string>
+    <string name="contacts">Contacts</string>
+    <string name="fab_content_desc">Add new contact</string>
 </resources>
