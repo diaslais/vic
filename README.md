@@ -1,5 +1,5 @@
-<h1 align="center">
-    <img width="250" src="https://github.com/diaslais/vic/blob/main/vic.png" alt="Vitoria Code - ViC">
+<h1 align="center" style='color:#2dfc82'>
+    ViC - Vitória Code
 </h1>
 
 <p align="center">
