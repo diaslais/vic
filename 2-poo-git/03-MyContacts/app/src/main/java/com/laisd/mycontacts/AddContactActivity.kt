@@ -1,6 +1,5 @@
 package com.laisd.mycontacts
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -13,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.laisd.mycontacts.MainActivity.Companion.contactsListAdapter
 import com.laisd.mycontacts.MainActivity.Companion.myContacts
 
 class AddContactActivity : AppCompatActivity() {
@@ -54,8 +54,8 @@ class AddContactActivity : AppCompatActivity() {
                     inputEdtComplement.text.toString()
                 )
                 myContacts.saveContact(personalContact)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                contactsListAdapter.notifyDataSetChanged()
+                finish()
             } else if (checkedRadioButtonId.equals(radioWork.id)) {
                 val workContact = Work(
                     inputEdtName.text.toString(),
@@ -63,8 +63,8 @@ class AddContactActivity : AppCompatActivity() {
                     inputEdtComplement.text.toString()
                 )
                 myContacts.saveContact(workContact)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                contactsListAdapter.notifyDataSetChanged()
+                finish()
             }
         }
     }
@@ -107,7 +107,7 @@ class AddContactActivity : AppCompatActivity() {
             notEmpty = false
             layout.error = getString(R.string.empty_field)
         }
-        for (contact in myContacts.getContacts()) {
+        for (contact in myContacts.contacts) {
             if (contact.phoneNumber.equals(field.text.toString())) {
                 val toast = Toast.makeText(this, getString(R.string.already_exists), Toast.LENGTH_SHORT)
                 toast.show()

@@ -14,13 +14,13 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     lateinit var searchView: SearchView
     lateinit var btnAddContact: FloatingActionButton
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         bindViews()
-
-        makeRecyclerView(myContacts.getContacts())
+        makeRecyclerView()
 
         searchView.setOnQueryTextListener(this)
 
@@ -34,9 +34,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         startActivity(intent)
     }
 
-    private fun makeRecyclerView(list: MutableList<Contact>) {
+    private fun makeRecyclerView() {
         contactsListRecyclerview.layoutManager = LinearLayoutManager(this)
-        val contactsListAdapter = ContactsListAdapter(list)
         contactsListRecyclerview.adapter = contactsListAdapter
     }
 
@@ -49,12 +48,13 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private fun doMySearch(query: String) {
         val filteredList = mutableListOf<Contact>()
         val queryUpperCase = query.toUpperCase()
-        for (contact in myContacts.getContacts()){
+        for (contact in myContacts.contacts){
             if (contact.name.toUpperCase().startsWith(queryUpperCase)) {
                 filteredList.add(contact)
             }
         }
-        makeRecyclerView(filteredList)
+        contactsListAdapter = ContactsListAdapter(filteredList)
+        makeRecyclerView()
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -73,5 +73,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     companion object {
         val myContacts: ContactsList = ContactsList()
+        var contactsListAdapter = ContactsListAdapter(myContacts.contacts)
     }
 }
